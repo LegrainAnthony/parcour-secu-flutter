@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Visitor
+actor User
+
+
+rectangle "Bankestein" {
+  (Home Page) as HP
+  (Sign up / Login) as IC
+  (Accounts Page) as AP
+  (Details Accounts) as DA
+  (Recipients Page) as RP
+  (Settings Page) as SP
+  (Accounts) as As
+  (Account) as A
+  (RIB) as R
+  (Recipients) as Rps
+  (Transfer Page) as TP
+
+  Visitor --> IC : S'inscrit/Se connecte
+  User --> HP : Accède
+  User --> AP : Accède
+  User --> SP : Accède
+  User --> TP : Accède
+  User --> SP : logout
+  AP --> As : Ajouter
+  As --> DA : Accede
+  DA --> A : Supprimer
+  DA --> R : Editer
+  DA --> R : Télecharger
+  User -->  RP: accède
+  RP --> Rps : Ajouter
+  RP --> Rps : Supprimer
+  TP --> A : virement de 
+  A --> Rps : Vers
+  SP --> (thème) : changer
+  SP --> (logout)
+  SP --> (language) : changer
+  A --> (transaction) : see last 30
+  HP --> (transaction) : see last 3
+  HP --> R : Editer
+  
+}
+
+@enduml
